@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use Illuminate\Support\Str;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -46,4 +46,11 @@ class User extends Authenticatable
         return $this->hasOne('App\image');
     }
 
+    public function getFullnameAttribute(){
+        return  $this->attributes['first_name']." ".$this->attributes['last_name'];
+    }
+
+    public function setPasswordAttribute($username){
+        $this->attributes['username'] = Str::of($username)->slug('-');
+    }
 }

@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('show', function () {
-    return $user = User::find(1)->stasks;
+    return User::find(1)->Fullname;
 });
