@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\StaskController;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('show', function () {
-    return User::isAdmin()->get();
-});
 
-Route::resource('user', 'UserController');
+Route::resource('user', 'UserController')->middleware('checkAdmin');
 
 Route::get('show','StaskController@show')->name('stask.show');
 Route::get('create','StaskController@create')->name('stask.create');
