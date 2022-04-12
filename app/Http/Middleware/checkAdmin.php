@@ -20,7 +20,6 @@ class checkAdmin
         if(Auth::check() && User::where('id',Auth::id())->first()->isAdmin == true){
             return $next($request);
         }
-        return redirect()->route('welcome');
-        
+        return redirect()->route('welcome'); 
     }
 }

@@ -20,7 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-
 Route::resource('user', 'UserController')->middleware('checkAdmin');
 
 Route::get('show','StaskController@show')->name('stask.show');

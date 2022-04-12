@@ -16,7 +16,8 @@ class UserController extends Controller
     {
         dd(User::all());
     }
-
+ 
+    
     /**
      * Show the form for creating a new resource.
      *
