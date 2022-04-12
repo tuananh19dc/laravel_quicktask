@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('show', function () {
-    return User::find(1)->Fullname;
+    return User::isAdmin()->get();
 });

@@ -6,6 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Scope;
+use App\Scopes\isActive as GlobalIsActive;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -52,5 +55,14 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($username){
         $this->attributes['username'] = Str::of($username)->slug('-');
+    }
+
+    public function scopeIsAdmin($query){
+        return $query->where('isAdmin','true');
+    }
+
+    protected static function booted()
+    {
+        static::addGlobalScope(new GlobalIsActive);
     }
 }
