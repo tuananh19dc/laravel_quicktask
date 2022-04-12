@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StaskController;
 use App\User;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,13 @@ Route::get('/', function () {
 Route::get('show', function () {
     return User::isAdmin()->get();
 });
+
+Route::resource('user', 'UserController');
+
+Route::get('show','StaskController@show')->name('stask.show');
+Route::get('create','StaskController@create')->name('stask.create');
+Route::get('store','StaskController@store')->name('stask.store');
+Route::get('update','StaskController@update')->name('stask.update');
+Route::get('edit','StaskController@edit')->name('stask.edit');
+Route::get('destroy','StaskController@destroy')->name('stask.destroy');
+Route::get('index','StaskController@index')->name('stask.index');
