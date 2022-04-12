@@ -21,5 +21,6 @@ class checkAdmin
             return $next($request);
         }
         return redirect()->route('welcome');
+        
     }
 }
